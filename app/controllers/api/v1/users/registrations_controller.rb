@@ -33,9 +33,9 @@ class Api::V1::Users::RegistrationsController < ApplicationController
 						@vendor.image = ""
 						@vendor.user_id = @user.id
 						if @vendor.save
-							render json: @user.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 201
+							render json: @user.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 200
 						else
-							render json: @vendor.errors.full_messages.as_json(), status: 201
+							render json: @vendor.errors.full_messages.as_json(), status: 200
 						end
 					elsif cv == 1
 						@customer = Customer.new
@@ -45,19 +45,19 @@ class Api::V1::Users::RegistrationsController < ApplicationController
 						@customer.image = ""
 						@customer.user_id = @user.id
 						if @customer.save
-							render json: @user.as_json(:except =>[:created_at, :updated_at], :include => [:customer]), status: 201
+							render json: @user.as_json(:except =>[:created_at, :updated_at], :include => [:customer]), status: 200
 						else
-							render json: @customer.errors.full_messages.as_json(), status: 400
+							render json: @customer.errors.full_messages.as_json(), status: 200
 						end
 					end
 				else
-					render json: @user.errors.full_messages.as_json(), status: 201
+					render json: @user.errors.full_messages.as_json(), status: 200
 				end
 			else
-				render json: "-1"
+				render json: "-1", status: 200
 			end
 		rescue
-			render json: "-2"
+			render json: "-2", status: 200
 		end
 	end
 end
