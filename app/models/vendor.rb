@@ -7,4 +7,5 @@ class Vendor < ApplicationRecord
 	validates :number, length: { is: 11 }
 
 	belongs_to :user
+  has_many :hall_managers
 end

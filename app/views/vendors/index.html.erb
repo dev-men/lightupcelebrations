@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row login_signup_heading" style="padding:0px;margin:0px;">
+        <div class="col-md-12">
+          <center><h2 class="heading_text">Listing All Vendors</h2></center>
+        </div>
+      </div>
+      <div class="jumbotron" style="padding-top:1em;padding-bottom:1em; background-color: rgba(26,188,156,0.7); border-radius:0 0 1em 1em;">
+        <div class="row">
+          <div class="col-md-12 login_signup_panel">
+            <table class="table table-dark" style="color:#FFFFFF;font-weight:bold;font-family: 'Merriweather', serif;text-align: left; float: left;">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Email</th>
+                  <th>Registered At</th>
+                  <th>Name</th>
+                  <th>CNIC</th>
+                  <th>Number</th>
+                  <th>Show</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @vendors.each do |v|%>
+                  <tr>
+                    <td><%= v.user.id%></td>
+                    <td><%= v.user.email%></td>
+                    <td><%= v.user.created_at%></td>
+                    <td><%= v.name%></td>
+                    <td><%= v.cnic%></td>
+                    <td><%= v.number%></td>
+                    <td><%= link_to "Show", vendor_path(v.id), class:"btn btn-success"%></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

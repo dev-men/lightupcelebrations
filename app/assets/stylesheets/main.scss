@@ -1,6 +1,11 @@
 body{
   padding: 0px;
   margin: 0px;
+  background: url('black.jpg')  no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 #notice_wrapper{
   top: 0;
@@ -17,3 +22,153 @@ body{
 .my_notice{
   background: rgba(130,224,170, 0.8);border-style: solid;border-color: #45B39D;border-radius: 5px;
 }
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+    color: #1ABC9C;
+}
+.btn-success.btn-outline {
+    color: #1ABC9C;
+}
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,{
+    color: #fff;
+}
+.signup{
+   margin-top: 10px;
+   border: 2px solid white;
+   font-weight: bold;
+}
+.login{
+  margin-top: 10px;
+  margin-right: 5px;
+  border: 2px solid white;
+  font-weight: bold;
+}
+.my_nav_bar_row{
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+}
+.my_nav_bar{
+  background: yellow;
+}
+.my_nav_bar > li{
+  width: 100%;
+  background: red;
+  border: solid 3px #333;
+}
+.my_nav_bar > li:hover{
+  background: white;
+  color: black;
+}
+#notice_wrapper{
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  .app_alert, .app_notice{
+    padding: 0.6em 0;text-align: center;margin: 0;font-size: 1.2em;font-weight: 700;color: #FFFFFF;letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+}
+.my_alert{
+  background: rgba(241, 148, 138, 0.8);border-style: solid;border-color: #A93226;border-radius: 5px;
+}
+.my_notice{
+  background: rgba(48, 110, 255, 0.8);border-style: solid;border-color: #2B65EC;border-radius: 5px;
+}
+.shared-links a{
+  background-color:#1ABC9C;box-shadow:0 0 5px rgba(0,0,0,0.12);border:1px solid #1ABC9C;margin:0;
+  padding:8px 0;position:relative;width:100%;display:block;color:#F0F0F0;margin-bottom: -1.49em;
+  font-weight:bold;font-family: 'Merriweather', serif;cursor: default;
+}
+.shared-links a:hover{
+  background-color:#F0F0F0;text-decoration:none;color:#1ABC9C;
+  cursor: pointer;text-decoration:none;
+}
+.shared-links a:focus{
+  box-shadow:0 0 5px rgba(0,0,0,0.12) inset
+}
+
+.login_signup_heading{
+  background: #1ABC9C;border-top-right-radius: 1em;border-top-left-radius: 1em;
+}
+.login_signup_panel{
+  border: 2px solid;border-radius: 1em;border-color: #1ABC9C;padding-left: 3em;padding-right: 3em;padding-top: 0px;padding-bottom: 1em;
+}
+.login_signup_label{
+  //color: #306EFF;
+  color:#FFFFFF;font-weight:bold;font-family: 'Merriweather', serif;cursor: default;float: left;text-align: left;
+  margin-top: 0.7em;font-size: 1em;
+}
+.login_signup_label:hover{
+  cursor: pointer;
+}
+.my_text_field{
+  font-weight:bold;font-family: 'Merriweather', serif;color: #0041C2;//#306EFF;
+}
+.remember_label{
+  color: #0041C2;font-weight:bold;font-family: 'Merriweather', serif;cursor: default;
+}
+.heading_text{
+  color: #F0F0F0; font-weight:bold;font-family: 'Merriweather', serif;
+  text-align: center; float: center;
+}
+.active_button {
+    background-color: #1ABC9C;
+    color: inherit;
+    transition: all .5s;
+    border-color: #1ABC9C;
+}
+.active_button:hover{
+    background: #1ABC9C;
+}
+.inactive_button {
+    background-color: #1ABC9C;
+    color: inherit;
+    transition: all .5s;
+}
+.inactive_button:hover{
+    background: #1589FF;
+}
+
+.alert-error {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-alert {
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
+ }
+
+.alert-success {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    text-align: left;
+ }
+ .key{
+   text-align: left;float: left;
+   color: #F0F0F0; font-weight:bold;font-family: 'Merriweather', serif;
+   font-size: 1.2em;
+ }
+ .value{
+   text-align: right;float: right;
+   color: #FFFFFF; font-weight:bold;font-family: 'Merriweather', serif;
+   font-size: 1em;
+ }

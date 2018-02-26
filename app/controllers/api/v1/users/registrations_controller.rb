@@ -8,14 +8,22 @@ class Api::V1::Users::RegistrationsController < ApplicationController
 			password = params[:password]
 			password_confirmation = params[:password_confirmation]
 			user_name = params[:name]
-			cnic = params[:cnic]
+      cnic = params[:cnic]
 			number = params[:number]
 			cv = params[:cv].to_i
 			if password == password_confirmation
+        #debugger
 				@user = User.new
 				@user.email = email
 				@user.password = password
 				@user.password_confirmation = password_confirmation
+        @user.role = cv
+        if cv == 1
+          @user.approve = true
+        else
+          @user.approve = false
+        end
+        #debugger
 				if @user.save
 					if cv == 0
 						@vendor = Vendor.new

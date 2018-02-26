@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row login_signup_heading" style="padding:0px;margin:0px;">
+        <div class="col-md-12">
+          <center><h2 class="heading_text">Vendor Complete Profile</h2></center>
+        </div>
+      </div>
+      <div class="jumbotron" style="padding-top:1em;padding-bottom:1em; background-color: rgba(26,188,156,0.7); border-radius:0 0 1em 1em;">
+        <div class="row">
+          <div class="col-md-12 login_signup_panel">
+            <br>
+            <div class="row">
+              <div class="col-md-3 col-xs-12">
+                <%= image_tag("user.png", {style: "width:17em;height:17em;",class: "my_img img-responsive img-thumbnail img-circle",alt: "User Profile Image"}) %>
+              </div>
+              <div class="col-md-9 col-xs-12">
+                <div class="row" style="margin:0.5em;">
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">ID: </label>
+                    <label class="value"><%= @vendor.user.id%></label>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">Email: </label>
+                    <label class="value"><%= @vendor.user.email%></label>
+                  </div>
+                </div>
+                <hr>
+                <div class="row" style="margin:0.5em;">
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">Regsitered At: </label>
+                    <label class="value"><%= @vendor.user.created_at%></label>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                  </div>
+                </div>
+                <hr>
+                <div class="row" style="margin:0.5em;">
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">Name: </label>
+                    <label class="value"><%= @vendor.name%></label>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">CNIC: </label>
+                    <label class="value"><%= @vendor.cnic%></label>
+                  </div>
+                </div>
+                <hr>
+                <div class="row" style="margin:0.5em;">
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">Number: </label>
+                    <label class="value"><%= @vendor.number%></label>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4 col-xs-12"></div>
+          <div class="col-md-2 col-xs-12">
+            <center>
+              <%= link_to "Back", vendors_path, class:"btn btn-info", style:"color:#FFFFFF;font-weight:bold;font-family: 'Merriweather', serif;"%>
+            </center>
+          </div>
+          <div class="col-md-2 col-xs-12">
+            <% if @vendor.user.approve == false%>
+              <center>
+                <%= link_to "Approve", vendor_path(@vendor), method: :patch, class:"btn btn-success", style:"color:#FFFFFF;font-weight:bold;font-family: 'Merriweather', serif;"%>
+              </center>
+            <%end%>
+          </div>
+          <div class="col-md-4 col-xs-12"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
