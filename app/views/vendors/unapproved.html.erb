@@ -24,15 +24,17 @@
               </thead>
               <tbody>
                 <% @unapproved.each do |v|%>
-                  <tr>
-                    <td><%= v.id%></td>
-                    <td><%= v.email%></td>
-                    <td><%= v.created_at%></td>
-                    <td><%= v.vendor.name%></td>
-                    <td><%= v.vendor.cnic%></td>
-                    <td><%= v.vendor.number%></td>
-                    <td><%= link_to "Show", vendor_path(v.vendor.id), class:"btn btn-success"%></td>
-                  </tr>
+                  <% if v.vendor != nil %>
+                    <tr>
+                      <td><%= v.id%></td>
+                      <td><%= v.email%></td>
+                      <td><%= v.created_at%></td>
+                      <td><%= v.vendor.name%></td>
+                      <td><%= v.vendor.cnic%></td>
+                      <td><%= v.vendor.number%></td>
+                      <td><%= link_to "Show", vendor_path(v.vendor.id), class:"btn btn-success"%></td>
+                    </tr>
+                  <% end %>
                 <% end %>
               </tbody>
             </table>
