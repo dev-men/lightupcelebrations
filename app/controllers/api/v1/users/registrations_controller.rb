@@ -35,7 +35,7 @@ class Api::V1::Users::RegistrationsController < ApplicationController
 						if @vendor.save
 							render json: @user.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 201
 						else
-							render json: @vendor.errors.full_messages.as_json(), status: 400
+							render json: @vendor.errors.full_messages.as_json(), status: 201
 						end
 					elsif cv == 1
 						@customer = Customer.new
@@ -51,7 +51,7 @@ class Api::V1::Users::RegistrationsController < ApplicationController
 						end
 					end
 				else
-					render json: @user.errors.full_messages.as_json(), status: 400
+					render json: @user.errors.full_messages.as_json(), status: 201
 				end
 			else
 				render json: "-1"

@@ -1,4 +1,13 @@
 class Api::V1::Users::HallManagersController < ApplicationController
+  def index
+    begin
+      @halls = HallManager.all
+      render json: @halls.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 201
+    rescue
+      render json: "-2"
+    end
+  end
+
   def create
     begin
       @user = User.find_by_email(params[:user_email])
