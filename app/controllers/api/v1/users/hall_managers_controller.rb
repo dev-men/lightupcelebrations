@@ -5,7 +5,7 @@ class Api::V1::Users::HallManagersController < ApplicationController
       @halls = HallManager.all
       render json: @halls.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 200
     rescue
-      render json: "-2"
+      render json: "-2", status: 200
     end
   end
 
