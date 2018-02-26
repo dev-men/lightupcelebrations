@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-    namespace :v1 do
-      namespace :users do
-        get 'hall_manager/create'
-      end
-    end
-  end
-
   devise_for :users, path: 'users'
   # eg. http://localhost:3000/users/sign_in
   devise_for :admins, path: 'admins'
@@ -19,7 +11,7 @@ Rails.application.routes.draw do
         resources :hall_managers, defaults: {format: :json}
         resources :customers, defaults: {format: :json}
         resources :registrations, only: [:create], defaults: {format: :json}
-        resources :sessions, only: [:create, :destroy], defaults: {format: :json}
+        resource :sessions, only: [:create, :destroy], defaults: {format: :json}
         resources :vendors, defaults: {format: :json}
       end
     end

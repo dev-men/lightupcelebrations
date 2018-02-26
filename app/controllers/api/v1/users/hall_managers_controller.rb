@@ -1,8 +1,9 @@
 class Api::V1::Users::HallManagersController < ApplicationController
+  skip_before_action :authenticate_user_from_token!, :only => [:index], :raise => false
   def index
     begin
       @halls = HallManager.all
-      render json: @halls.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 201
+      render json: @halls.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 200
     rescue
       render json: "-2"
     end
@@ -16,15 +17,15 @@ class Api::V1::Users::HallManagersController < ApplicationController
         @manager = HallManager.new(manager_params)
         @manager.vendor_id = @vendor.id
         if @manager.save
-          render json: @manager.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 201
+          render json: @manager.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 200
         else
-          render json: @manager.errors.full_messages
+          render json: @manager.errors.full_messages, status: 200
         end
       else
-        render json: "-1"
+        render json: "-1", status: 200
       end
     rescue
-      render json: "-2"
+      render json: "-2", status: 200
     end
   end
 
