@@ -23,12 +23,12 @@ class Api::V1::Users::HallManagersController < ApplicationController
         @manager.image5 = params[:image5]
         @manager.image6 = params[:image6]
         @manager.hall_name = params[:hall_name]
-        #@manager. = params[:]
-        #@manager. = params[:]
-        #@manager. = params[:]
-        #@manager. = params[:]
-        #@manager. = params[:]
-        #@manager. = params[:]
+        @manager.number_of_halls = params[:number_of_halls].to_i
+        @manager.address_line_1 = params[:address_line_1]
+        @manager.address_line_1 = params[:address_line_2]
+        @manager.city = params[:city]
+        @manager.budget_per_head = params[:budget_per_head].to_i
+        @manager.guest_capacity = params[:guest_capacity].to_i
         @user.vendor_role = 1
         @user.save
         @manager.user_id = @user.id
