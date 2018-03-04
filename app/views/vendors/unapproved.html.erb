@@ -23,18 +23,21 @@
                 </tr>
               </thead>
               <tbody>
-                <% @unapproved.each do |v|%>
-                  <% if v.vendor != nil %>
+                <% @unapproved.each do |c|%>
                     <tr>
-                      <td><%= v.id%></td>
-                      <td><%= v.email%></td>
-                      <td><%= v.created_at%></td>
-                      <td><%= v.vendor.name%></td>
-                      <td><%= v.vendor.cnic%></td>
-                      <td><%= v.vendor.number%></td>
-                      <td><%= link_to "Show", vendor_path(v.vendor.id), class:"btn btn-success"%></td>
+                      <td><%= c.id%></td>
+                      <% if c.image? %>
+                          <td><%= image_tag(c.image, class:"img-responsive img-circle", style:"width:50px; height: 50px;  border: 2px solid #FFFFFF;")%></td>
+                      <%else%>
+                          <td><%= image_tag('user.png', class:"img-responsive img-circle", style:"width:50px; height: 50px; border: 2px solid #FFFFFF;")%></td>
+                      <%end%>
+                      <td><%= c.email%></td>
+                      <td><%= c.created_at%></td>
+                      <td><%= c.name%></td>
+                      <td><%= c.cnic%></td>
+                      <td><%= c.number%></td>
+                      <td><%= link_to "Show", vendor_path(c.id), class:"btn btn-success"%></td>
                     </tr>
-                  <% end %>
                 <% end %>
               </tbody>
             </table>

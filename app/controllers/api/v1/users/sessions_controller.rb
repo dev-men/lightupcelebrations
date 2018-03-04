@@ -8,7 +8,7 @@ class Api::V1::Users::SessionsController < ApplicationController
         @u = User.find_by_email(email)
         if @u && @u.valid_password?(password)
           if @u.approve == true
-            render json: @u.as_json(:except =>[:created_at, :updated_at], :include => [:customer, :vendor]), status: 200
+            render json: @u.as_json(:except =>[:created_at, :updated_at]), status: 200
           else
             render json: "0", status: 200
           end

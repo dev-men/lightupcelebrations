@@ -13,24 +13,28 @@
             <br>
             <div class="row">
               <div class="col-md-3 col-xs-12">
-                <%= image_tag("user.png", {style: "width:17em;height:17em;",class: "my_img img-responsive img-thumbnail img-circle",alt: "User Profile Image"}) %>
+                <% if @vendor.image? %>
+                    <%= image_tag(@vendor.image, {style: "width:17em;height:17em;",class: "my_img img-responsive img-thumbnail img-circle",alt: "Vendor Profile Image"}) %>
+                <%else%>
+                    <%= image_tag("user.png", {style: "width:17em;height:17em;",class: "my_img img-responsive img-thumbnail img-circle",alt: "Vendor Profile Image"}) %>
+                <%end%>
               </div>
               <div class="col-md-9 col-xs-12">
                 <div class="row" style="margin:0.5em;">
                   <div class="col-md-6 col-xs-12">
                     <label class="key">ID: </label>
-                    <label class="value"><%= @vendor.user.id%></label>
+                    <label class="value"><%= @vendor.id%></label>
                   </div>
                   <div class="col-md-6 col-xs-12">
                     <label class="key">Email: </label>
-                    <label class="value"><%= @vendor.user.email%></label>
+                    <label class="value"><%= @vendor.email%></label>
                   </div>
                 </div>
                 <hr>
                 <div class="row" style="margin:0.5em;">
                   <div class="col-md-6 col-xs-12">
                     <label class="key">Regsitered At: </label>
-                    <label class="value"><%= @vendor.user.created_at%></label>
+                    <label class="value"><%= @vendor.created_at%></label>
                   </div>
                   <div class="col-md-6 col-xs-12">
                   </div>
@@ -69,7 +73,7 @@
             </center>
           </div>
           <div class="col-md-2 col-xs-12">
-            <% if @vendor.user.approve == false%>
+            <% if @vendor.approve == false%>
               <center>
                 <%= link_to "Approve", vendor_path(@vendor), method: :patch, class:"btn btn-success", style:"color:#FFFFFF;font-weight:bold;font-family: 'Merriweather', serif;"%>
               </center>

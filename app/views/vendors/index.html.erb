@@ -14,6 +14,7 @@
               <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Image</th>
                   <th>Email</th>
                   <th>Registered At</th>
                   <th>Name</th>
@@ -23,15 +24,20 @@
                 </tr>
               </thead>
               <tbody>
-                <% @vendors.each do |v|%>
+                <% @vendors.each do |c|%>
                   <tr>
-                    <td><%= v.user.id%></td>
-                    <td><%= v.user.email%></td>
-                    <td><%= v.user.created_at%></td>
-                    <td><%= v.name%></td>
-                    <td><%= v.cnic%></td>
-                    <td><%= v.number%></td>
-                    <td><%= link_to "Show", vendor_path(v.id), class:"btn btn-success"%></td>
+                    <td><%= c.id%></td>
+                    <% if c.image? %>
+                        <td><%= image_tag(c.image, class:"img-responsive img-circle", style:"width:50px; height: 50px;  border: 2px solid #FFFFFF;")%></td>
+                    <%else%>
+                        <td><%= image_tag('user.png', class:"img-responsive img-circle", style:"width:50px; height: 50px; border: 2px solid #FFFFFF;")%></td>
+                    <%end%>
+                    <td><%= c.email%></td>
+                    <td><%= c.created_at%></td>
+                    <td><%= c.name%></td>
+                    <td><%= c.cnic%></td>
+                    <td><%= c.number%></td>
+                    <td><%= link_to "Show", vendor_path(c.id), class:"btn btn-success"%></td>
                   </tr>
                 <% end %>
               </tbody>

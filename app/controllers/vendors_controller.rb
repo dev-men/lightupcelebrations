@@ -3,7 +3,7 @@ class VendorsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @vendors = Vendor.all
+    @vendors = User.where(role: 0)
   end
 
   def approved
@@ -15,13 +15,12 @@ class VendorsController < ApplicationController
   end
 
   def show
-    @vendor = Vendor.find(params[:id])
+    @vendor = User.find(params[:id])
   end
 
   def update
     #debugger
-    @vendor = Vendor.find(params[:id])
-    @user = @vendor.user
+    @user = User.find(params[:id])
     @user.approve = true
     if @user.save
       flash[:notice] = "Vendor Profile Approved Successfully"

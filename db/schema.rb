@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226224452) do
+ActiveRecord::Schema.define(version: 20180226123835) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,36 +29,6 @@ ActiveRecord::Schema.define(version: 20180226224452) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "name"
-    t.string "cnic"
-    t.string "number"
-    t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_customers_on_user_id"
-  end
-
-  create_table "hall_managers", force: :cascade do |t|
-    t.string "image1"
-    t.string "image2"
-    t.string "image3"
-    t.string "image4"
-    t.string "image5"
-    t.string "image6"
-    t.integer "number"
-    t.string "line1"
-    t.string "line2"
-    t.string "city"
-    t.integer "budget"
-    t.integer "guest"
-    t.integer "vendor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["vendor_id"], name: "index_hall_managers_on_vendor_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,23 +43,16 @@ ActiveRecord::Schema.define(version: 20180226224452) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "authentication_token", limit: 30
-    t.integer "role"
-    t.boolean "approve"
-    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "vendors", force: :cascade do |t|
     t.string "name"
     t.string "cnic"
     t.string "number"
     t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "categoryid"
-    t.index ["user_id"], name: "index_vendors_on_user_id"
+    t.integer "role"
+    t.integer "vendor_role", default: 0
+    t.boolean "approve"
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
