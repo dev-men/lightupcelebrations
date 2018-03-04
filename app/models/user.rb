@@ -15,4 +15,5 @@ class User < ApplicationRecord
 
    #has_one :customer
    #has_one :vendor
+   has_many :hall_managers
 end

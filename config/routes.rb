@@ -9,10 +9,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :users do
         resources :hall_managers, defaults: {format: :json}
-        resources :customers, defaults: {format: :json}
         resources :registrations, only: [:create], defaults: {format: :json}
         resource :sessions, only: [:create, :destroy], defaults: {format: :json}
-        resources :vendors, defaults: {format: :json}
       end
     end
   end

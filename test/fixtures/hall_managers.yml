@@ -7,13 +7,14 @@ one:
   image4: MyString
   image5: MyString
   image6: MyString
-  number: 1
-  line1: MyString
-  line2: MyString
+  hall_name: MyString
+  number_of_halls: 1
+  address_line_1: MyString
+  address_line_2: MyString
   city: MyString
-  budget: 1
-  guest: 1
-  vendor_id: 1
+  budget_per_head: 1
+  guest_capacity: 1
+  user_id: 1
 
 two:
   image1: MyString
@@ -22,10 +23,11 @@ two:
   image4: MyString
   image5: MyString
   image6: MyString
-  number: 1
-  line1: MyString
-  line2: MyString
+  hall_name: MyString
+  number_of_halls: 1
+  address_line_1: MyString
+  address_line_2: MyString
   city: MyString
-  budget: 1
-  guest: 1
-  vendor_id: 1
+  budget_per_head: 1
+  guest_capacity: 1
+  user_id: 1
