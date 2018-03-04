@@ -11,7 +11,7 @@ class Api::V1::Users::HallManagersController < ApplicationController
   end
 
   def create
-    #begin
+    begin
       @user = User.find_by_email(params[:user_email])
       if @user.role == 0
         @manager = HallManager.new(manager_params)
@@ -21,14 +21,14 @@ class Api::V1::Users::HallManagersController < ApplicationController
         if @manager.save
           render json: @manager.as_json(:except =>[:created_at, :updated_at, :user_id], :include => [:user]), status: 200
         else
-          render json: @manager.errors.full_messages, status: 200
+          render json: {:errors => @manager.errors.full_messages}, status: 200
         end
       else
         render json: "-1", status: 200
       end
-    #rescue
-    #  render json: "-2", status: 200
-    #end
+    rescue
+      render json: "-2", status: 200
+    end
   end
 
   def manager_params
