@@ -14,7 +14,21 @@ class Api::V1::Users::HallManagersController < ApplicationController
     begin
       @user = User.find_by_email(params[:user_email])
       if @user.role == 0
-        @manager = HallManager.new(manager_params)
+        #@manager = HallManager.new(manager_params)
+        @manager = HallManager.new
+        @manager.image1 = params[:image1]
+        @manager.image2 = params[:image2]
+        @manager.image3 = params[:image3]
+        @manager.image4 = params[:image4]
+        @manager.image5 = params[:image5]
+        @manager.image6 = params[:image6]
+        @manager.hall_name = params[:hall_name]
+        #@manager. = params[:]
+        #@manager. = params[:]
+        #@manager. = params[:]
+        #@manager. = params[:]
+        #@manager. = params[:]
+        #@manager. = params[:]
         @user.vendor_role = 1
         @user.save
         @manager.user_id = @user.id
