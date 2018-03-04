@@ -15,6 +15,8 @@ class Api::V1::Users::HallManagersController < ApplicationController
       @user = User.find_by_email(params[:user_email])
       if @user.role == 0
         @manager = HallManager.new(manager_params)
+        @user.vendor_role = 1
+        @user.save
         @manager.user_id = @user.id
         if @manager.save
           render json: @manager.as_json(:except =>[:created_at, :updated_at, :user_id], :include => [:user]), status: 200
