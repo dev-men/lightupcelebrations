@@ -62,6 +62,12 @@
 
               </div>
             </div>
+            <hr>
+            <div class="row">
+              <%if @vendor.vendor_role == 1%>
+                <%= render 'halls' %>
+              <%end%>
+            </div>
           </div>
         </div>
         <br>
