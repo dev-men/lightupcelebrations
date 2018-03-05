@@ -4,7 +4,7 @@ class Api::V1::Users::HallManagersController < ApplicationController
   def index
     begin
       @halls = HallManager.all
-      render json: @halls.as_json(:except =>[:created_at, :updated_at, :user_id], :include => [:user]), status: 200
+      render json: @halls.as_json(:except =>[:created_at, :updated_at]), status: 200
     rescue
       render json: "-2", status: 200
     end
