@@ -1,0 +1,26 @@
+class CreatePhotographers < ActiveRecord::Migration[5.1]
+  def change
+    create_table :photographers do |t|
+      t.string :image1
+      t.string :image2
+      t.string :image3
+      t.string :image4
+      t.string :image5
+      t.string :image6
+      t.string :name
+      t.string :description
+      t.string :equipments
+      t.string :city
+      t.integer :mayo
+      t.integer :mehndi
+      t.integer :barat
+      t.integer :walima
+      t.integer :party
+      t.integer :other
+      t.integer :user_id
+
+      t.timestamps
+    end
+    add_index :photographers, :user_id
+  end
+end

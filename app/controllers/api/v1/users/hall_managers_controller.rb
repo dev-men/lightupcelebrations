@@ -13,8 +13,7 @@ class Api::V1::Users::HallManagersController < ApplicationController
   def create
     begin
       @user = User.find_by_email(params[:user_email])
-      if @user.role == 0
-        #@manager = HallManager.new(manager_params)
+      if @user.role == 0 && (@user.vendor_role == 1 || @user.vendor_role == 0)
         @manager = HallManager.new
         @manager.image1 = params[:image1]
         @manager.image2 = params[:image2]
@@ -30,8 +29,9 @@ class Api::V1::Users::HallManagersController < ApplicationController
         @manager.budget_per_head = params[:budget_per_head].to_i
         @manager.guest_capacity = params[:guest_capacity].to_i
         @user.vendor_role = 1
-        @user.save
         @manager.user_id = @user.id
+        @user.save
+
         if @manager.save
           render json: @manager.as_json(:except =>[:created_at, :updated_at, :user_id], :include => [:user]), status: 200
         else

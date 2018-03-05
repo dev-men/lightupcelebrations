@@ -66,6 +66,8 @@
             <div class="row">
               <%if @vendor.vendor_role == 1%>
                 <%= render 'halls' %>
+              <%elsif @vendor.vendor_role == 2%>
+                <%= render 'photographer' %>
               <%end%>
             </div>
           </div>

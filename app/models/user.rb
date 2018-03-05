@@ -13,7 +13,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-   #has_one :customer
-   #has_one :vendor
    has_many :hall_managers
+   has_many :photographers
 end

@@ -9,6 +9,7 @@ class HomesController < ApplicationController
     @unapproved = 0
     @approved = 0
     @managers = 0
+    @photograpers = 0
 
     @u = User.all.count
     @c = User.where(role: 1).count
@@ -16,5 +17,6 @@ class HomesController < ApplicationController
     @unapproved = User.where(role: 0, approve: false).count
     @approved = User.where(role: 0, approve: true).count
     @managers = HallManager.all.count
+    @photograpers = Photographer.all.count
   end
 end

@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  image4: MyString
+  image5: MyString
+  image6: MyString
+  name: MyString
+  description: MyString
+  equipments: MyString
+  city: MyString
+  mayo: 1
+  mehndi: 1
+  barat: 1
+  walima: 1
+  party: 1
+  other: 1
+  user_id: 1
+
+two:
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  image4: MyString
+  image5: MyString
+  image6: MyString
+  name: MyString
+  description: MyString
+  equipments: MyString
+  city: MyString
+  mayo: 1
+  mehndi: 1
+  barat: 1
+  walima: 1
+  party: 1
+  other: 1
+  user_id: 1
