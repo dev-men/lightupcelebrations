@@ -13,7 +13,7 @@ class Api::V1::Users::DecoratorsController < ApplicationController
   def create
     begin
       @user = User.find_by_email(params[:user_email])
-      if @user.role == 0 && (@user.vendor_role == 3 || @user.vendor_role == 0)
+      if @user.role == 0 && (@user.vendor_role == 0 || @user.vendor_role == 3)
         @d = Decorator.new
         @d.image1 = params[:image1]
         @d.image2 = params[:image2]
@@ -24,14 +24,14 @@ class Api::V1::Users::DecoratorsController < ApplicationController
         @d.address_line_1 = params[:address_line_1]
         @d.address_line_2 = params[:address_line_2]
         @d.city = params[:city]
-        @d.company_name = params[:company_name]
+        @d.compnay_name = params[:company_name]
         @d.theme = params[:theme]
-        @d.mayo = params[:mayo]
-        @d.mehndi = params[:mehndi]
-        @d.barat = params[:barat]
-        @d.walima = params[:walima]
-        @d.party = params[:party]
-        @d.other = params[:other]
+        @d.mayo = params[:mayo].to_i
+        @d.mehndi = params[:mehndi].to_i
+        @d.barat = params[:barat].to_i
+        @d.walima = params[:walima].to_i
+        @d.party = params[:party].to_i
+        @d.other = params[:other].to_i
         @user.vendor_role = 3
         @d.user_id = @user.id
         @user.save

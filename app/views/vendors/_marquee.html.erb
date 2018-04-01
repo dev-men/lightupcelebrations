@@ -1,0 +1,80 @@
+<div class="col-md-12">
+  <h3 class="heading_text">Listing All Marquee Profiles</h3>
+</div>
+<br><br><br>
+<% @halls = @vendor.marquees%>
+<% @halls.each do |h|%>
+  <div class="row login_signup_panel" style="padding-top:2em;padding-left:1em;padding-right:1em;">
+    <div class="col-md-12 col-xs-12">
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Marquee Name: </label> <label class="value"><%= h.marquee_name%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Number of Marquee: </label> <label class="value"><%= h.numbe_of_marquee%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Guest Capacity: </label> <label class="value"><%= h.guest_capacity%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Budget Per Head: </label> <label class="value"><%= h.budget_per_head%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">City: </label> <label class="value"><%= h.city%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+        </div>
+        <div class="col-md-12 col-xs-12">
+          <label class="key">Address Line 1: </label> <label class="value"><%= h.address_line_1%></label>
+        </div>
+        <div class="col-md-12 col-xs-12">
+          <label class="key">Address Line 2: </label> <label class="value"><%= h.address_line_2%></label>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image1? %>
+        <%= image_tag(h.image1, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image2? %>
+        <%= image_tag(h.image2, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image3? %>
+        <%= image_tag(h.image3, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image4? %>
+        <%= image_tag(h.image4, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image5? %>
+        <%= image_tag(h.image5, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image6? %>
+        <%= image_tag(h.image6, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+  </div>
+
+<%end%>

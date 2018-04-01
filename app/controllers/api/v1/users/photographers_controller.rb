@@ -13,7 +13,7 @@ class Api::V1::Users::PhotographersController < ApplicationController
   def create
     begin
       @user = User.find_by_email(params[:user_email])
-      if @user.role == 0 && (@user.vendor_role == 2 || @user.vendor_role == 0)
+      if @user.role == 0 && (@user.vendor_role == 0 || @user.vendor_role == 3)
         @photographer = Photographer.new
         @photographer.image1 = params[:image1]
         @photographer.image2 = params[:image2]

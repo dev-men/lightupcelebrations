@@ -13,7 +13,7 @@ class Api::V1::Users::MarqueesController < ApplicationController
   def create
     begin
       @user = User.find_by_email(params[:user_email])
-      if @user.role == 0 && (@user.vendor_role == 4 || @user.vendor_role == 0)
+      if @user.role == 0 && (@user.vendor_role == 0 || @user.vendor_role == 4)
         @manager = Marquee.new
         @manager.image1 = params[:image1]
         @manager.image2 = params[:image2]

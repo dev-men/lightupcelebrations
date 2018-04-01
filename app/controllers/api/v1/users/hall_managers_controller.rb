@@ -13,7 +13,7 @@ class Api::V1::Users::HallManagersController < ApplicationController
   def create
     begin
       @user = User.find_by_email(params[:user_email])
-      if @user.role == 0 && (@user.vendor_role == 1 || @user.vendor_role == 0)
+      if @user.role == 0 && (@user.vendor_role == 0 || @user.vendor_role == 1)
         @manager = HallManager.new
         @manager.image1 = params[:image1]
         @manager.image2 = params[:image2]
