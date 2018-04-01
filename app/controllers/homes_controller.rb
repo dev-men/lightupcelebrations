@@ -11,6 +11,7 @@ class HomesController < ApplicationController
     @managers = 0
     @photograpers = 0
     @decorators = 0
+    @marquees = 0
 
     @u = User.all.count
     @c = User.where(role: 1).count
@@ -20,5 +21,6 @@ class HomesController < ApplicationController
     @managers = HallManager.all.count
     @photograpers = Photographer.all.count
     @decorators = Decorator.all.count
+    @marquees = Marquee.all.count
   end
 end
