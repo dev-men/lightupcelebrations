@@ -14,5 +14,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
    has_many :hall_managers
+   has_many :decorators
    has_many :photographers
+   has_many :marquees
 end

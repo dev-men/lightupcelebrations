@@ -4,7 +4,7 @@ class Api::V1::Users::PhotographersController < ApplicationController
   def index
     begin
       @photographers = Photographer.all
-      render json: @photographers.as_json(:except =>[:created_at, :updated_at]), status: 200
+      render json: @photographers.as_json(:except =>[:created_at, :updated_at], :include => [:user]), status: 200
     rescue
       render json: "-2", status: 200
     end

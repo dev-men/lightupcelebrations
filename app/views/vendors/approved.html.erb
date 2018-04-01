@@ -32,7 +32,9 @@
                       <td><%= image_tag('user.png', class:"img-responsive img-circle", style:"width:50px; height: 50px; border: 2px solid #FFFFFF;")%></td>
                   <%end%>
                   <td><%= c.email%></td>
-                  <td><%= c.created_at%></td>
+                  <% @str = c.created_at.to_s %>
+                  <% @str = @str.tr('UTC', '')%>
+                  <td><%= @str%></td>
                   <td><%= c.name%></td>
                   <td><%= c.cnic%></td>
                   <td><%= c.number%></td>

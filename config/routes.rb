@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :users do
+        resources :marquees, defaults: {format: :json}
         resources :hall_managers, defaults: {format: :json}
+        resources :decorators, defaults: {format: :json}
         resources :photographers, defaults: {format: :json}
         resources :registrations, only: [:create], defaults: {format: :json}
         resource :sessions, only: [:create, :destroy], defaults: {format: :json}
@@ -21,6 +23,10 @@ Rails.application.routes.draw do
     collection do
       get :approved
       get :unapproved
+      get :hall_managers
+      get :photographers
+      get :decorators
+      get :marquee
     end
   end
   authenticated :admin do

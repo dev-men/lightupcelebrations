@@ -6,6 +6,9 @@ git_source(:github) do |repo_name|
 end
 
 
+# Pagination Gem
+gem 'will_paginate-bootstrap'
+gem 'will_paginate', '~> 3.1.0'
 gem 'devise'
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
 gem 'bootstrap-sass', '~> 3.3.7'

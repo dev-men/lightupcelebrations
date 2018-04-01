@@ -3,15 +3,15 @@ class VendorsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @vendors = User.where(role: 0)
+    @vendors = User.where(role: 0).order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
   end
 
   def approved
-    @approved = User.where(role: 0, approve: true)
+    @approved = User.where(role: 0, approve: true).order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
   end
 
   def unapproved
-    @unapproved = User.where(role: 0, approve: false)
+    @unapproved = User.where(role: 0, approve: false).order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
   end
 
   def show
@@ -19,7 +19,6 @@ class VendorsController < ApplicationController
   end
 
   def update
-    #debugger
     @user = User.find(params[:id])
     @user.approve = true
     if @user.save
@@ -29,4 +28,21 @@ class VendorsController < ApplicationController
     end
     redirect_to vendors_path
   end
+
+  def hall_managers
+    @managers = HallManager.order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
+  end
+
+  def photographers
+    @photograpers = Photographer.order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
+  end
+
+  def decorators
+    @decorators = Decorator.order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
+  end
+
+  def marquee
+    @marquees = Marquee.order('created_at DESC').paginate(:page => params[:page], :per_page => 30)
+  end
+
 end

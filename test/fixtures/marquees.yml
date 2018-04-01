@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  image4: MyString
+  image5: MyString
+  image6: MyString
+  marquee_name: MyString
+  numbe_of_marquee: 1
+  address_line_1: MyString
+  address_line_2: MyString
+  city: MyString
+  budget_per_head: 1
+  guest_capacity: 1
+
+two:
+  image1: MyString
+  image2: MyString
+  image3: MyString
+  image4: MyString
+  image5: MyString
+  image6: MyString
+  marquee_name: MyString
+  numbe_of_marquee: 1
+  address_line_1: MyString
+  address_line_2: MyString
+  city: MyString
+  budget_per_head: 1
+  guest_capacity: 1

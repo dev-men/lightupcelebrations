@@ -34,9 +34,21 @@
                 <div class="row" style="margin:0.5em;">
                   <div class="col-md-6 col-xs-12">
                     <label class="key">Regsitered At: </label>
-                    <label class="value"><%= @vendor.created_at%></label>
+                    <% @str = @vendor.created_at.to_s %>
+                    <% @str = @str.tr('UTC', '')%>
+                    <label class="value"><%= @str%></label>
                   </div>
                   <div class="col-md-6 col-xs-12">
+                    <label class="key">Vendor Catrgory: </label>
+                    <% if @vendor.vendor_role == 1%>
+                      <label class="value">Hall Manager</label>
+                    <% elsif @vendor.vendor_role == 2%>
+                      <label class="value">Photographer</label>
+                    <% elsif @vendor.vendor_role == 3%>
+                      <label class="value">Decorator</label>
+                    <% elsif @vendor.vendor_role == 4%>
+                      <label class="value">Marquee</label>
+                    <%end%>
                   </div>
                 </div>
                 <hr>
