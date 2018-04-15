@@ -19,6 +19,9 @@ Rails.application.routes.draw do
             post :image_change
             post :password_change
           end
+          collection do
+            post :social
+          end
         end
         resource :sessions, only: [:create, :destroy], defaults: {format: :json}
       end
