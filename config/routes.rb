@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :users do
-        resources :vendors, defaults: {format: :json}
+        resources :vendors do
+          collection do
+            get :unapproved
+          end
+        end
         resources :marquees, defaults: {format: :json}
         resources :hall_managers, defaults: {format: :json}
         resources :decorators, defaults: {format: :json}
