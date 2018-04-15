@@ -6,43 +6,74 @@ class VendorsController < ApplicationController
     @vendors = User.where(role: 0).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
   end
 
-  def approved
-    @approved = User.where(role: 0, approve: true).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
-  end
-
-  def unapproved
-    @unapproved = User.where(role: 0, approve: false).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
-  end
-
   def show
     @vendor = User.find(params[:id])
   end
 
-  def update
-    @user = User.find(params[:id])
-    @user.approve = true
-    if @user.save
-      flash[:notice] = "Vendor Profile Approved Successfully"
+  def approve_vendor
+    if params[:vendor_role] != nil
+      @vendor_role = params[:vendor_role].to_i
+      if @vendor_role == 1
+        @vendor = HallManager.find(params[:id])
+      elsif @vendor_role == 2
+        @vendor = Photographer.find(params[:id])
+      elsif @vendor_role == 3
+        @vendor = Decorator.find(params[:id])
+      elsif @vendor_role == 4
+        @vendor = Marquee.find(params[:id])
+      end
+
+      @vendor.approve = true
+      if @vendor.save
+        flash[:notice] = "Vendor Profile Approved Successfully"
+      else
+        flash[:alert] = "Vendor Profile Not Approved"
+      end
+      if @vendor_role == 1
+        redirect_to hall_managers_vendors_path
+      elsif @vendor_role == 2
+        redirect_to photographers_vendors_path
+      elsif @vendor_role == 3
+        redirect_to decorators_vendors_path
+      elsif @vendor_role == 4
+        redirect_to marquee_vendors_path
+      end
     else
-      flash[:alert] = "Vendor Profile Not Approved"
+      flash[:alert] = "Wrong Route"
+      redirect_to root_path
     end
-    redirect_to vendors_path
   end
 
   def hall_managers
-    @managers = HallManager.order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+    @managers = HallManager.where(approve: true).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+  end
+
+  def unapproved_hall_managers
+    @managers = HallManager.where(approve: false).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
   end
 
   def photographers
-    @photograpers = Photographer.order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+    @photograpers = Photographer.where(approve: true).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+  end
+
+  def unapproved_photographers
+    @photograpers = Photographer.where(approve: false).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
   end
 
   def decorators
-    @decorators = Decorator.order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+    @decorators = Decorator.where(approve: true).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+  end
+
+  def unapproved_decorators
+    @decorators = Decorator.where(approve: false).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
   end
 
   def marquee
-    @marquees = Marquee.order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+    @marquees = Marquee.where(approve: true).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
+  end
+
+  def unapproved_marquee
+    @marquees = Marquee.where(approve: false).order('created_at DESC').paginate(:page => params[:page], :per_page => 15)
   end
 
 end

@@ -19,11 +19,6 @@ class Api::V1::Users::RegistrationsController < ApplicationController
         @user.name = user_name
         @user.cnic = cnic
         @user.number = number
-        if role == 1
-          @user.approve = true
-        else
-          @user.approve = false
-        end
 				if @user.save
           render json: @user.as_json(:except =>[:created_at, :updated_at]), status: 200
 				else
@@ -36,29 +31,67 @@ class Api::V1::Users::RegistrationsController < ApplicationController
 			render json: "-2", status: 200
 		end
 	end
+
+  def update
+    begin
+      @user = User.find_by_email(params[:user_email])
+      if @user
+        @user.name = params[:name]
+        @user.cnic = params[:cnic]
+        @user.number = params[:number]
+				if @user.save
+          render json: @user.as_json(:except =>[:created_at, :updated_at]), status: 200
+				else
+					render json: {:errors => @user.errors.full_messages.as_json()}, status: 200
+				end
+      else
+        render json: "-1", status: 200
+      end
+    rescue
+      render json: "-2", status: 200
+    end
+  end
+
+  def image_change
+    begin
+      @user = User.find_by_email(params[:user_email])
+      if @user
+        @user.image = params[:image]
+        if @user.save
+          render json: @user.as_json(:except =>[:created_at, :updated_at]), status: 200
+        else
+          render json: {:errors => @user.errors.full_messages.as_json()}, status: 200
+        end
+      else
+        render json: "-1", status: 200
+      end
+    rescue
+      render json: "-2", status: 200
+    end
+  end
+
+  def password_change
+    begin
+      @user = User.find_by_email(params[:user_email])
+      if @user
+        password = params[:password]
+        password_confirmation = params[:password_confirmation]
+        if @user.valid_password?(params[:old_password]) && password == password_confirmation
+          @user.password = password
+  				@user.password_confirmation = password_confirmation
+          if @user.save
+            render json: "1", status: 200
+          else
+            render json: {:errors => @user.errors.full_messages.as_json()}, status: 200
+          end
+        else
+          render json: "0", status: 200
+        end
+      else
+        render json: "-1", status: 200
+      end
+    rescue
+      render json: "-2", status: 200
+    end
+  end
 end
-# if cv == 0
-# 	@vendor = Vendor.new
-# 	@vendor.name = user_name
-# 	@vendor.cnic = cnic
-# 	@vendor.number = number
-# 	@vendor.image = ""
-# 	@vendor.user_id = @user.id
-# 	if @vendor.save
-# 		render json: @user.as_json(:except =>[:created_at, :updated_at], :include => [:vendor]), status: 200
-# 	else
-# 		render json: {:errors => @vendor.errors.full_messages.as_json()}, status: 200
-# 	end
-# elsif cv == 1
-# 	@customer = Customer.new
-# 	@customer.name = user_name
-# 	@customer.cnic = cnic
-# 	@customer.number = number
-# 	@customer.image = ""
-# 	@customer.user_id = @user.id
-# 	if @customer.save
-# 		render json: @user.as_json(:except =>[:created_at, :updated_at], :include => [:customer]), status: 200
-# 	else
-# 		render json: {:errors => @customer.errors.full_messages.as_json()}, status: 200
-# 	end
-# end

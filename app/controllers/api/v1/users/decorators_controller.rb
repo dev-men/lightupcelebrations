@@ -3,7 +3,7 @@ class Api::V1::Users::DecoratorsController < ApplicationController
 
   def index
     begin
-      @halls = Decorator.all
+      @halls = Decorator.where(approve: true).limit(40)
       render json: @halls.as_json(:except =>[:created_at, :updated_at], :include => [:user]), status: 200
     rescue
       render json: "-2", status: 200
@@ -18,9 +18,6 @@ class Api::V1::Users::DecoratorsController < ApplicationController
         @d.image1 = params[:image1]
         @d.image2 = params[:image2]
         @d.image3 = params[:image3]
-        @d.image4 = params[:image4]
-        @d.image5 = params[:image5]
-        @d.image6 = params[:image6]
         @d.address_line_1 = params[:address_line_1]
         @d.address_line_2 = params[:address_line_2]
         @d.city = params[:city]

@@ -3,7 +3,7 @@ class Api::V1::Users::HallManagersController < ApplicationController
 
   def index
     begin
-      @halls = HallManager.all
+      @halls = HallManager.where(approve: true).limit(40)
       render json: @halls.as_json(:except =>[:created_at, :updated_at], :include => [:user]), status: 200
     rescue
       render json: "-2", status: 200
@@ -18,9 +18,6 @@ class Api::V1::Users::HallManagersController < ApplicationController
         @manager.image1 = params[:image1]
         @manager.image2 = params[:image2]
         @manager.image3 = params[:image3]
-        @manager.image4 = params[:image4]
-        @manager.image5 = params[:image5]
-        @manager.image6 = params[:image6]
         @manager.hall_name = params[:hall_name]
         @manager.number_of_halls = params[:number_of_halls].to_i
         @manager.address_line_1 = params[:address_line_1]
@@ -46,6 +43,6 @@ class Api::V1::Users::HallManagersController < ApplicationController
   end
 
   def manager_params
-    params.require(:hall_manager).permit(:image1, :image2, :image3, :image4, :image5, :image6, :hall_name, :number_of_halls, :address_line_1, :address_line_2, :city, :budget_per_head, :guest_capacity, :user_id)
+    params.require(:hall_manager).permit(:image1, :image2, :image3, :hall_name, :number_of_halls, :address_line_1, :address_line_2, :city, :budget_per_head, :guest_capacity, :user_id)
   end
 end

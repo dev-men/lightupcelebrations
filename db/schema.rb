@@ -33,9 +33,6 @@ ActiveRecord::Schema.define(version: 20180401083008) do
     t.string "image1"
     t.string "image2"
     t.string "image3"
-    t.string "image4"
-    t.string "image5"
-    t.string "image6"
     t.string "compnay_name"
     t.string "theme"
     t.string "address_line_1"
@@ -48,6 +45,7 @@ ActiveRecord::Schema.define(version: 20180401083008) do
     t.integer "party"
     t.integer "other"
     t.integer "user_id"
+    t.boolean "approve", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_decorators_on_user_id"
@@ -57,9 +55,6 @@ ActiveRecord::Schema.define(version: 20180401083008) do
     t.string "image1"
     t.string "image2"
     t.string "image3"
-    t.string "image4"
-    t.string "image5"
-    t.string "image6"
     t.string "hall_name"
     t.integer "number_of_halls"
     t.string "address_line_1"
@@ -68,6 +63,7 @@ ActiveRecord::Schema.define(version: 20180401083008) do
     t.integer "budget_per_head"
     t.integer "guest_capacity"
     t.integer "user_id"
+    t.boolean "approve", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hall_managers_on_user_id"
@@ -77,9 +73,6 @@ ActiveRecord::Schema.define(version: 20180401083008) do
     t.string "image1"
     t.string "image2"
     t.string "image3"
-    t.string "image4"
-    t.string "image5"
-    t.string "image6"
     t.string "marquee_name"
     t.integer "numbe_of_marquee"
     t.string "address_line_1"
@@ -88,6 +81,7 @@ ActiveRecord::Schema.define(version: 20180401083008) do
     t.integer "budget_per_head"
     t.integer "guest_capacity"
     t.integer "user_id"
+    t.boolean "approve", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_marquees_on_user_id"
@@ -97,9 +91,6 @@ ActiveRecord::Schema.define(version: 20180401083008) do
     t.string "image1"
     t.string "image2"
     t.string "image3"
-    t.string "image4"
-    t.string "image5"
-    t.string "image6"
     t.string "name"
     t.string "description"
     t.string "equipments"
@@ -111,6 +102,7 @@ ActiveRecord::Schema.define(version: 20180401083008) do
     t.integer "party"
     t.integer "other"
     t.integer "user_id"
+    t.boolean "approve", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_photographers_on_user_id"
@@ -136,7 +128,6 @@ ActiveRecord::Schema.define(version: 20180401083008) do
     t.string "image"
     t.integer "role"
     t.integer "vendor_role", default: 0
-    t.boolean "approve"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

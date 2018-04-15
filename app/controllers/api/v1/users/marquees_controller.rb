@@ -3,7 +3,7 @@ class Api::V1::Users::MarqueesController < ApplicationController
 
   def index
     begin
-      @halls = Marquee.all
+      @halls = Marquee.where(approve: true).limit(40)
       render json: @halls.as_json(:except =>[:created_at, :updated_at], :include => [:user]), status: 200
     rescue
       render json: "-2", status: 200
@@ -18,9 +18,6 @@ class Api::V1::Users::MarqueesController < ApplicationController
         @manager.image1 = params[:image1]
         @manager.image2 = params[:image2]
         @manager.image3 = params[:image3]
-        @manager.image4 = params[:image4]
-        @manager.image5 = params[:image5]
-        @manager.image6 = params[:image6]
         @manager.marquee_name = params[:marquee_name]
         @manager.numbe_of_marquee = params[:numbe_of_marquee].to_i
         @manager.address_line_1 = params[:address_line_1]

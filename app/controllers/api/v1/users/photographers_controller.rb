@@ -3,7 +3,7 @@ class Api::V1::Users::PhotographersController < ApplicationController
 
   def index
     begin
-      @photographers = Photographer.all
+      @photographers = Photographer.where(approve: true).limit(40)
       render json: @photographers.as_json(:except =>[:created_at, :updated_at], :include => [:user]), status: 200
     rescue
       render json: "-2", status: 200
@@ -13,14 +13,11 @@ class Api::V1::Users::PhotographersController < ApplicationController
   def create
     begin
       @user = User.find_by_email(params[:user_email])
-      if @user.role == 0 && (@user.vendor_role == 0 || @user.vendor_role == 3)
+      if @user.role == 0 && (@user.vendor_role == 0 || @user.vendor_role == 2)
         @photographer = Photographer.new
         @photographer.image1 = params[:image1]
         @photographer.image2 = params[:image2]
         @photographer.image3 = params[:image3]
-        @photographer.image4 = params[:image4]
-        @photographer.image5 = params[:image5]
-        @photographer.image6 = params[:image6]
         @photographer.name = params[:name]
         @photographer.description = params[:description]
         @photographer.equipments = params[:equipments]
@@ -50,6 +47,6 @@ class Api::V1::Users::PhotographersController < ApplicationController
   end
 
   def manager_params
-    params.require(:photographer).permit(:image1, :image2, :image3, :image4, :image5, :image6, :name, :description, :equipments, :city, :mayo, :mehndi, :barat, :walima, :party, :other, :user_id)
+    params.require(:photographer).permit(:image1, :image2, :image3, :name, :description, :equipments, :city, :mayo, :mehndi, :barat, :walima, :party, :other, :user_id)
   end
 end

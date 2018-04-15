@@ -4,9 +4,6 @@ class CreateDecorators < ActiveRecord::Migration[5.1]
       t.string :image1
       t.string :image2
       t.string :image3
-      t.string :image4
-      t.string :image5
-      t.string :image6
       t.string :compnay_name
       t.string :theme
       t.string :address_line_1
@@ -19,7 +16,7 @@ class CreateDecorators < ActiveRecord::Migration[5.1]
       t.integer :party
       t.integer :other
       t.integer :user_id
-
+      t.boolean :approve, :default => false
       t.timestamps
     end
     add_index :decorators, :user_id

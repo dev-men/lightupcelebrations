@@ -1,25 +1,22 @@
-<% content_for :title, "Decorators" %>
+<% content_for :title, "Approved Decorators" %>
 <div class="container-fluid" style="margin-top:1em;">
   <div class="row">
     <div class="col-md-12">
       <div class="row login_signup_heading" style="padding:0px;margin:0px;">
         <div class="col-md-12">
-          <center><h2 class="heading_text">Listing All Decorators</h2></center>
+          <center><h2 class="heading_text">Listing All Approved Decorators</h2></center>
         </div>
       </div>
-      <div class="jumbotron" style="padding-top:1em;padding-bottom:1em; background-color: rgba(26,188,156,0.7); border-radius:0 0 1em 1em;">
-        <div class="row">
+      <div class="jumbotron" style="padding-top:1em;padding-bottom:1em; background-color: rgba(26,188,156,0.7); border-radius:0 0 1em 1em;padding:0px;margin:0px;">
+        <div class="row" style="padding:0px;margin:0px;">
           <div class="col-md-12 login_signup_panel">
             <table class="table table-dark" style="color:#FFFFFF;font-weight:bold;font-family: 'Merriweather', serif;text-align: left; float: left;">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Image</th>
-                  <th>Email</th>
+                  <th>Company Name</th>
+                  <th>Theme</th>
                   <th>Registered At</th>
-                  <th>Name</th>
-                  <th>CNIC</th>
-                  <th>Number</th>
                   <th>Show</th>
                 </tr>
               </thead>
@@ -27,18 +24,11 @@
                 <% @decorators.each do |c|%>
                   <tr>
                     <td><%= c.id%></td>
-                    <% if c.user.image? %>
-                        <td><%= image_tag(c.user.image, class:"img-responsive img-circle", style:"width:50px; height: 50px;  border: 2px solid #FFFFFF;")%></td>
-                    <%else%>
-                        <td><%= image_tag('user.png', class:"img-responsive img-circle", style:"width:50px; height: 50px; border: 2px solid #FFFFFF;")%></td>
-                    <%end%>
-                    <td><%= c.user.email%></td>
+                    <td><%= c.compnay_name%></td>
+                    <td><%= c.theme%></td>
                     <% @str = c.user.created_at.to_s %>
                     <% @str = @str.tr('UTC', '')%>
                     <td><%= @str%></td>
-                    <td><%= c.user.name%></td>
-                    <td><%= c.user.cnic%></td>
-                    <td><%= c.user.number%></td>
                     <td><%= link_to "Show", vendor_path(c.user.id), class:"btn btn-success"%></td>
                   </tr>
                 <% end %>
