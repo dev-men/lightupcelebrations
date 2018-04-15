@@ -14,7 +14,7 @@ class Api::V1::Users::VendorsController < ApplicationController
         elsif @vendor_role == 4
           @vendors = @user.marquees.where(approve: true)
         end
-        render json: @vendors.as_json(:except =>[:created_at, :updated_at, :approve, :user_id]), status: 200
+        render json: @vendors.as_json(:except =>[:created_at, :updated_at, :approve, :user_id], :include => [:user]), status: 200
       else
         render json: "-1", status: 200
       end
@@ -38,7 +38,7 @@ class Api::V1::Users::VendorsController < ApplicationController
         elsif @vendor_role == 4
           @vendors = @user.marquees.where(approve: false)
         end
-        render json: @vendors.as_json(:except =>[:created_at, :updated_at, :approve, :user_id]), status: 200
+        render json: @vendors.as_json(:except =>[:created_at, :updated_at, :approve, :user_id], :include => [:user]), status: 200
       else
         render json: "-1", status: 200
       end
