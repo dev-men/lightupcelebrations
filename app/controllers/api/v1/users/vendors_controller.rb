@@ -8,7 +8,7 @@ class Api::V1::Users::VendorsController < ApplicationController
         if @vendor_role == 1
           @vendors = @user.hall_managers.where(approve: true)
         elsif @vendor_role == 2
-          @vendors = @user.photograpers.where(approve: true)
+          @vendors = @user.photographers.where(approve: true)
         elsif @vendor_role == 3
           @vendors = @user.decorators.where(approve: true)
         elsif @vendor_role == 4
@@ -32,7 +32,7 @@ class Api::V1::Users::VendorsController < ApplicationController
         if @vendor_role == 1
           @vendors = @user.hall_managers.where(approve: false)
         elsif @vendor_role == 2
-          @vendors = @user.photograpers.where(approve: false)
+          @vendors = @user.photographers.where(approve: false)
         elsif @vendor_role == 3
           @vendors = @user.decorators.where(approve: false)
         elsif @vendor_role == 4
