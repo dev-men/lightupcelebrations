@@ -6,4 +6,5 @@ class Decorator < ApplicationRecord
   validates :city, presence: true
 
   belongs_to :user
+  has_many :bookings, as: :imageable
 end

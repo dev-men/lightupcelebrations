@@ -9,4 +9,5 @@ class HallManager < ApplicationRecord
   validates :guest_capacity, presence: true
 
   belongs_to :user
+  has_many :bookings, as: :imageable
 end

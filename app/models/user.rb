@@ -17,4 +17,5 @@ class User < ApplicationRecord
    has_many :decorators
    has_many :photographers
    has_many :marquees
+   has_many :bookings
 end

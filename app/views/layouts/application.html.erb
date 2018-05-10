@@ -18,52 +18,74 @@
    <!-- Google Font -->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
    <style>
-   #mainNavCollapse li a{
-     color: #FFFFFF;text-decoration: none;font-family: 'Merriweather', serif;cursor: pointer;
-     font-size: 13px;
-   }
+     #mainNavCollapse li a{
+       color: #FFFFFF;text-decoration: none;font-family: 'Merriweather', serif;cursor: pointer;
+       font-size: 13px;
+     }
    </style>
  </head>
 
 
-  <body>
+  <body class="main_body">
     <% if admin_signed_in? %>
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-2 col-xs-12" style="left:0px;top:0px;bottom:0px;height:100%;position:fixed;z-index:1000;">
-              <div class="row">
-               <nav class="navbar navbar-inverse" style="left:0px;top:0px;bottom:0px;height:100%;border-radius:0px;background:rgba(26,188,156,0.7);color:#FFFFFF;margin:0px;padding:0px;">
-                 <div class="container-fluid">
-                   <div class="navbar-header">
-                     <button class="navbar-toggle" data-target="#mainNavCollapse" data-toggle="collapse" type="button">
-                       <span class="icon-bar"></span>
-                       <span class="icon-bar"></span>
-                       <span class="icon-bar"></span>
-                       <span class="icon-bar"></span>
-                      </button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="mainNavCollapse" style="padding:0px;margin:0px;">
-                      <ul class="nav navbar-nav" style="width:100%;margin:0px;padding:0px;">
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Dashboard", root_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Customers", customers_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Vendors", vendors_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Approved Hall Managers", hall_managers_vendors_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Unapproved Hall Managers", unapproved_hall_managers_vendors_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Approved Photographers", photographers_vendors_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Unapproved Photographers", unapproved_photographers_vendors_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Approved Decorators", decorators_vendors_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Unpproved Decorators", unapproved_decorators_vendors_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Approved Marquees", marquee_vendors_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Unapproved Marquees", unapproved_marquee_vendors_path%></li>
-                        <li style="height:50px;width:200px;margin:0px;padding:0px;"><%= link_to  "Logout", destroy_admin_session_path, method: :delete%></li>
-                     </ul>
-                    </div>
-                 </div>
-               </nav>
-             </div>
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+          <div id="dismiss">
+              <i class="glyphicon glyphicon-arrow-left"></i>
           </div>
-          <div class="col-md-2"></div>
-          <div class="col-md-10 col-xs-12" style="padding:0px;margin:0px;">
+          <div class="sidebar-header">
+              <h3>LIGHT UP CELEBRATIONS</h3>
+          </div>
+          <ul class="list-unstyled components">
+            <p>Admin Dashboard</p>
+            <li><%= link_to  "Dashboard", root_path%></li>
+            <li><%= link_to  "Customers", customers_path%></li>
+            <li><%= link_to  "Vendors", vendors_path%></li>
+            <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Hall Managers</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li><%= link_to  "Approved Hall Managers", hall_managers_vendors_path%></li>
+                <li><%= link_to  "Unapproved Hall Managers", unapproved_hall_managers_vendors_path%></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#marqueeMenu" data-toggle="collapse" aria-expanded="false">Marquees</a>
+              <ul class="collapse list-unstyled" id="marqueeMenu">
+                <li><%= link_to  "Approved Marquees", marquee_vendors_path%></li>
+                <li><%= link_to  "Unapproved Marquees", unapproved_marquee_vendors_path%></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#photograpersMenu" data-toggle="collapse" aria-expanded="false">Photograpers</a>
+              <ul class="collapse list-unstyled" id="photograpersMenu">
+                <li><%= link_to  "Approved Photographers", photographers_vendors_path%></li>
+                <li><%= link_to  "Unapproved Photographers", unapproved_photographers_vendors_path%></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#decoratorsMenu" data-toggle="collapse" aria-expanded="false">Decorators</a>
+              <ul class="collapse list-unstyled" id="decoratorsMenu">
+                <li><%= link_to  "Approved Decorators", decorators_vendors_path%></li>
+                <li><%= link_to  "Unpproved Decorators", unapproved_decorators_vendors_path%></li>
+              </ul>
+            </li>
+            <li><%= link_to  "Logout", destroy_admin_session_path, method: :delete%></li>
+          </ul>
+        </nav>
+        <!-- Page Content Holder -->
+        <div id="content">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" style="background:rgba(26,188,156,1); padding:10px;font-weight:bold;font-size:16px;">
+                  <i class="glyphicon glyphicon-align-left"></i>
+                  <span>Open Menu</span>
+                </button>
+              </div>
+            </div>
+          </nav>
+          <div class="col-md-12 col-xs-12"  >
             <% if notice %>
               <div id="notice_wrapper" class="my_notice">
                 <center><p class="app_notice"><%= notice %></p></center>
@@ -76,8 +98,11 @@
             <%= yield %>
           </div>
         </div>
-
       </div>
+      <div class="overlay"></div>
+      <!-- jQuery Custom Scroller CDN -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
     <%else%>
       <div class="col-md-12 col-xs-12" style="padding:0px;margin:0px;">
         <% if notice %>
@@ -94,4 +119,29 @@
     <%end%>
 
     </body>
+    <script>
+    $(document).ready(function(){
+
+    	setTimeout(function(){
+    	    $("#notice_wrapper").slideToggle('slow', function(){
+    	      $(this).remove();
+    	    });
+    	  }, 6000);
+    	$("#sidebar").mCustomScrollbar({
+    			theme: "minimal"
+    	});
+
+    	$('#dismiss, .overlay').on('click', function () {
+    			$('#sidebar').removeClass('active');
+    			$('.overlay').fadeOut();
+    	});
+
+    	$('#sidebarCollapse').on('click', function () {
+    			$('#sidebar').addClass('active');
+    			$('.overlay').fadeIn();
+    			$('.collapse.in').toggleClass('in');
+    			$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    	});
+    });
+    </script>
   </html>

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :users, path: 'users'
   # eg. http://localhost:3000/users/sign_in
   devise_for :admins, path: 'admins'
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :users do
+        resource :bookings
         resources :vendors do
           collection do
             get :unapproved
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  resource :bookings
   resources :homes
   resources :customers
   resources :vendors do
@@ -52,20 +53,4 @@ Rails.application.routes.draw do
     root :to => 'homes#index'
   end
   root 'homes#index'
-  #authenticated :admin do
-	#	root :to => 'homes#index'
-	#end
-  #root 'admin/ssessions#new'
-
-  #devise_scope :admin do
-  #  authenticated :admin do
-  #    root 'homes#index', as: :authenticated_root
-  #  end
-
-  #  unauthenticated :admin do
-  #    root 'devise/sessions#new', as: :unauthenticated_root
-  #  end
-  #end
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

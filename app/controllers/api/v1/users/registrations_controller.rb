@@ -37,7 +37,7 @@ class Api::V1::Users::RegistrationsController < ApplicationController
       @user = User.find_by_email(params[:user_email])
       if @user
         @user.name = params[:name]
-        @user.cnic = params[:cnic]
+        #@user.cnic = params[:cnic]
         @user.number = params[:number]
 				if @user.save
           render json: @user.as_json(:except =>[:created_at, :updated_at]), status: 200
