@@ -37,40 +37,96 @@
           <div class="sidebar-header">
               <h3>LIGHT UP CELEBRATIONS</h3>
           </div>
-          <ul class="list-unstyled components">
+          <ul class="list-unstyled components" style="list-style:fill;">
             <p>Admin Dashboard</p>
-            <li><%= link_to  "Dashboard", root_path%></li>
-            <li><%= link_to  "Customers", customers_path%></li>
-            <li><%= link_to  "Vendors", vendors_path%></li>
             <li>
-              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Hall Managers</a>
-              <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li><%= link_to  "Approved Hall Managers", hall_managers_vendors_path%></li>
-                <li><%= link_to  "Unapproved Hall Managers", unapproved_hall_managers_vendors_path%></li>
+              <%= link_to root_path do%>
+                <%= image_tag('circle.png', style:"width:12px;height:12px;margin-top:-3px;margin-right:5px;")%>Dashboard
+              <%end%>
+            </li>
+            <li>
+              <%= link_to customers_path do%>
+                <%= image_tag('circle.png', style:"width:12px;height:12px;margin-top:-3px;margin-right:5px;")%>Customers
+              <%end%>
+            </li>
+            <li>
+              <%= link_to vendors_path do%>
+                <%= image_tag('circle.png', style:"width:12px;height:12px;margin-top:-3px;margin-right:5px;")%>Vendors
+              <%end%>
+            </li>
+            <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                <%= image_tag('circle.png', style:"width:12px;height:12px;margin-top:-3px;margin-right:5px;")%>Hall Managers
+              </a>
+              <ul class="collapse list-unstyled" id="pageSubmenu" style="list-style:fill;">
+                <li>
+                  <%= link_to hall_managers_vendors_path do%>
+                    <%= image_tag('circle.png', style:"width:9px;height:9px;margin-top:-3px;margin-right:5px;")%>Approved Hall Managers
+                  <%end%>
+                </li>
+                <li>
+                  <%= link_to unapproved_hall_managers_vendors_path do%>
+                    <%= image_tag('circle.png', style:"width:9px;height:9px;margin-top:-3px;margin-right:5px;")%>Unapproved Hall Managers
+                  <%end%>
+                </li>
               </ul>
             </li>
             <li>
-              <a href="#marqueeMenu" data-toggle="collapse" aria-expanded="false">Marquees</a>
+              <a href="#marqueeMenu" data-toggle="collapse" aria-expanded="false">
+                <%= image_tag('circle.png', style:"width:12px;height:12px;margin-top:-3px;margin-right:5px;")%>Marquees
+              </a>
               <ul class="collapse list-unstyled" id="marqueeMenu">
-                <li><%= link_to  "Approved Marquees", marquee_vendors_path%></li>
-                <li><%= link_to  "Unapproved Marquees", unapproved_marquee_vendors_path%></li>
+                <li>
+                  <%= link_to marquee_vendors_path do%>
+                    <%= image_tag('circle.png', style:"width:9px;height:9px;margin-top:-3px;margin-right:5px;")%>Approved Marquees
+                  <%end%>
+                </li>
+                <li>
+                  <%= link_to unapproved_marquee_vendors_path do%>
+                    <%= image_tag('circle.png', style:"width:9px;height:9px;margin-top:-3px;margin-right:5px;")%>Unapproved Marquees
+                  <%end%>
+                </li>
               </ul>
             </li>
             <li>
-              <a href="#photograpersMenu" data-toggle="collapse" aria-expanded="false">Photograpers</a>
+              <a href="#photograpersMenu" data-toggle="collapse" aria-expanded="false">
+                <%= image_tag('circle.png', style:"width:12px;height:12px;margin-top:-3px;margin-right:5px;")%>Photograpers
+              </a>
               <ul class="collapse list-unstyled" id="photograpersMenu">
-                <li><%= link_to  "Approved Photographers", photographers_vendors_path%></li>
-                <li><%= link_to  "Unapproved Photographers", unapproved_photographers_vendors_path%></li>
+                <li>
+                  <%= link_to photographers_vendors_path do%>
+                    <%= image_tag('circle.png', style:"width:9px;height:9px;margin-top:-3px;margin-right:5px;")%>Approved Photographers
+                  <%end%>
+                </li>
+                <li>
+                  <%= link_to unapproved_photographers_vendors_path do%>
+                  <%= image_tag('circle.png', style:"width:9px;height:9px;margin-top:-3px;margin-right:5px;")%>Unapproved Photographers
+                <%end%>
+                </li>
               </ul>
             </li>
             <li>
-              <a href="#decoratorsMenu" data-toggle="collapse" aria-expanded="false">Decorators</a>
+              <a href="#decoratorsMenu" data-toggle="collapse" aria-expanded="false">
+                <%= image_tag('circle.png', style:"width:12px;height:12px;margin-top:-3px;margin-right:5px;")%>Decorators
+              </a>
               <ul class="collapse list-unstyled" id="decoratorsMenu">
-                <li><%= link_to  "Approved Decorators", decorators_vendors_path%></li>
-                <li><%= link_to  "Unpproved Decorators", unapproved_decorators_vendors_path%></li>
+                <li>
+                  <%= link_to decorators_vendors_path do%>
+                    <%= image_tag('circle.png', style:"width:9px;height:9px;margin-top:-3px;margin-right:5px;")%>Approved Decorators
+                  <%end%>
+                </li>
+                <li>
+                  <%= link_to unapproved_decorators_vendors_path do%>
+                    <%= image_tag('circle.png', style:"width:9px;height:9px;margin-top:-3px;margin-right:5px;")%>Unpproved Decorators
+                  <%end%>
+                </li>
               </ul>
             </li>
-            <li><%= link_to  "Logout", destroy_admin_session_path, method: :delete%></li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete do%>
+                <%= image_tag('circle.png', style:"width:12px;height:12px;margin-top:-3px;margin-right:5px;")%>Logout
+              <%end%>
+            </li>
           </ul>
         </nav>
         <!-- Page Content Holder -->
