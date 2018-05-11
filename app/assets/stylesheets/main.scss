@@ -183,6 +183,7 @@ table td{
   font-size: 1em;
 }
 
+
 /*
     DEMO STYLE
 */
@@ -209,11 +210,11 @@ a, a:hover, a:focus {
 }
 
 .navbar {
-    padding: 2px 2px;
-    background: rgba(26,188,156,0);
+    padding: 15px 10px;
+    background: #fff;
     border: none;
     border-radius: 0;
-    margin-bottom: 4px;
+    margin-bottom: 40px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -237,51 +238,23 @@ a, a:hover, a:focus {
     width: 250px;
     position: fixed;
     top: 0;
-    left: -250px;
+    left: 0;
     height: 100vh;
     z-index: 999;
     background: rgba(26,188,156,0.7);
     color: #fff;
     transition: all 0.3s;
-    overflow-y: scroll;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 #sidebar.active {
-    left: 0;
-}
-
-#dismiss {
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    background: rgba(26,188,156,0.7);
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-}
-#dismiss:hover {
-    background: #fff;
-    color: rgba(26,188,156,1);
-}
-
-.overlay {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 998;
-    display: none;
+    margin-left: -250px;
 }
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: rgba(26,188,156,0.7);
+    background: rgba(26,188,156,0.9);
+    text-align: center;
+    font-weight: bold;
 }
 
 #sidebar ul.components {
@@ -298,11 +271,10 @@ a, a:hover, a:focus {
     padding: 10px;
     font-size: 1.1em;
     display: block;
-    font-weight: bold;
 }
 #sidebar ul li a:hover {
-    color: rgba(26,188,156,1);
-    background: #fff;
+  color: rgba(26,188,156,1);
+  background: #fff;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
@@ -359,11 +331,36 @@ a.article, a.article:hover {
     CONTENT STYLE
 ----------------------------------------------------- */
 #content {
-    width: 100%;
-    padding: 10px;
+    width: calc(100% - 250px);
+    padding: 40px;
     min-height: 100vh;
     transition: all 0.3s;
     position: absolute;
     top: 0;
     right: 0;
+}
+#content.active {
+    width: 100%;
+}
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
 }

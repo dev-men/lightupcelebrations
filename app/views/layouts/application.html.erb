@@ -28,16 +28,14 @@
 
   <body class="main_body">
     <% if admin_signed_in? %>
-      <div class="container-fluid">
+    <div class="container-fluid">
+      <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-          <div id="dismiss">
-              <i class="glyphicon glyphicon-arrow-left"></i>
-          </div>
           <div class="sidebar-header">
-              <h3>LIGHT UP CELEBRATIONS</h3>
+            <h3>LIGHT UP CELEBRATIONS</h3>
           </div>
-          <ul class="list-unstyled components" style="list-style:fill;">
+          <ul class="list-unstyled components">
             <p>Admin Dashboard</p>
             <li>
               <%= link_to root_path do%>
@@ -131,12 +129,12 @@
         </nav>
         <!-- Page Content Holder -->
         <div id="content">
-          <nav class="navbar navbar-default">
-            <div class="container-fluid">
+          <nav class="navbar navbar-default" style="padding:0px;margin:0px;background:rgba(0,0,0,0.1);">
+            <div class="container-fluid" >
               <div class="navbar-header">
                 <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" style="background:rgba(26,188,156,1); padding:10px;font-weight:bold;font-size:16px;">
                   <i class="glyphicon glyphicon-align-left"></i>
-                  <span>Open Menu</span>
+                  <span id="menu_text">Close Menu</span>
                 </button>
               </div>
             </div>
@@ -155,10 +153,9 @@
           </div>
         </div>
       </div>
-      <div class="overlay"></div>
-      <!-- jQuery Custom Scroller CDN -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
-
+    </div>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     <%else%>
       <div class="col-md-12 col-xs-12" style="padding:0px;margin:0px;">
         <% if notice %>
@@ -176,28 +173,31 @@
 
     </body>
     <script>
+    var menu_open = true;
     $(document).ready(function(){
-
     	setTimeout(function(){
     	    $("#notice_wrapper").slideToggle('slow', function(){
     	      $(this).remove();
     	    });
     	  }, 6000);
-    	$("#sidebar").mCustomScrollbar({
-    			theme: "minimal"
-    	});
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
 
-    	$('#dismiss, .overlay').on('click', function () {
-    			$('#sidebar').removeClass('active');
-    			$('.overlay').fadeOut();
-    	});
-
-    	$('#sidebarCollapse').on('click', function () {
-    			$('#sidebar').addClass('active');
-    			$('.overlay').fadeIn();
-    			$('.collapse.in').toggleClass('in');
-    			$('a[aria-expanded=true]').attr('aria-expanded', 'false');
-    	});
+        $('#sidebarCollapse').on('click', function () {
+            if(menu_open == true){
+              menu_open = false;
+              $("#menu_text").text("Open Menu");
+            }
+            else if(menu_open == false){
+              menu_open = true;
+              $("#menu_text").text("Close Menu");
+            }
+            console.log("Menu Status: " + menu_open);
+            $('#sidebar, #content').toggleClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
     });
     </script>
   </html>
