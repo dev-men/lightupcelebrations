@@ -8,11 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :users do
-        resource :bookings do
-          collection do
-            get :get_all
-          end
-        end
+        resources :bookings, only: [:create, :index], defaults: {format: :json}
         resources :vendors do
           collection do
             get :unapproved
@@ -35,7 +31,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resource :bookings
+  resources :bookings
   resources :homes
   resources :customers
   resources :vendors do

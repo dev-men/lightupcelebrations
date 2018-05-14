@@ -1,6 +1,6 @@
 class Api::V1::Users::BookingsController < ApplicationController
 
-  def get_all
+  def index
     begin
       @user = User.find_by_email(params[:user_email])
       if @user
