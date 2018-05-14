@@ -1,8 +1,39 @@
 class Api::V1::Users::BookingsController < ApplicationController
-  def index
-  end
 
-  def show
+  def get_all
+    begin
+      @user = User.find_by_email(params[:user_email])
+      if @user
+        if @user.role == 1
+          @bookings = @user.bookings
+          render json: @bookings.as_json(:except =>[:id, :created_at, :updated_at, :user_id], :include =>[:imageable]), status: 200
+        else
+          @bookings = []
+          @vendor = nil
+          if @user.vendor_role == 1
+            @vendor = @user.hall_managers
+          elsif @user.vendor_role == 2
+            @vendor = @user.photographers
+          elsif @user.vendor_role == 3
+            @vendor = @user.decorators
+          elsif @user.vendor_role == 4
+            @vendor = @user.marquees
+          end
+          if @vendor != nil
+            @vendor.each do |v|
+              @bookings << v.bookings
+            end
+            render json: @bookings.as_json(:except =>[:id, :created_at, :updated_at, :user_id, :imageable_type, :imageable_id], :include =>[:user]), status: 200
+          else
+            render json: "-1", status: 200
+          end
+        end
+      else
+        render json: "-1", status: 200
+      end
+    rescue
+      render json: "-2", status: 200
+    end
   end
 
   def create
