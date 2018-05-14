@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bookings
   devise_for :users, path: 'users'
   # eg. http://localhost:3000/users/sign_in
   devise_for :admins, path: 'admins'

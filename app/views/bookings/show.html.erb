@@ -1,2 +1,93 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<% content_for :title, "Booking" %>
+<div class="container-fluid" style="margin-top:1em;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row login_signup_heading" style="padding:0px;margin:0px;">
+        <div class="col-md-12">
+          <center><h2 class="heading_text">Booking Detail</h2></center>
+        </div>
+      </div>
+      <div class="jumbotron" style="padding-top:1em;padding-bottom:1em; background-color: rgba(26,188,156,0.7); border-radius:0 0 1em 1em;">
+        <div class="row">
+          <div class="col-md-12 login_signup_panel">
+            <br>
+            <div class="row">
+              <div class="col-md-12 col-xs-12">
+                <div class="row" style="margin:0.5em;">
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">Booking ID: </label>
+                    <label class="value"><%= @booking.id%></label>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">Booking Date: </label>
+                    <label class="value"><%= @booking.day%></label>
+                  </div>
+                </div>
+                <hr>
+                <div class="row" style="margin:0.5em;">
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">Function Start Time: </label>
+                    <label class="value"><%= @booking.start.strftime("%H:%M %S %p") %></label>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">Function End Time: </label>
+                    <label class="value"><%= @booking.end.strftime("%H:%M %S %p") %></label>
+                  </div>
+                </div>
+                <hr>
+                <div class="row" style="margin:0.5em;">
+                  <div class="col-md-6 col-xs-12">
+                    <label class="key">Function Location: </label>
+                    <label class="value"><%= @booking.location%></label>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12"><h4 style="text-align:center;width:100%;color:#FFFFFF;">Customer Detail</h4></div>
+              <div class="col-md-6 col-xs-12">
+                <label class="key">Customer Name: </label>
+                <label class="value"><%= @booking.user.name%></label>
+              </div>
+              <div class="col-md-6 col-xs-12">
+                <label class="key">Customer CNIC: </label>
+                <label class="value"><%= @booking.user.cnic%></label>
+              </div>
+              <div class="col-md-6 col-xs-12">
+                <label class="key">Customer Number: </label>
+                <label class="value"><%= @booking.user.number%></label>
+              </div>
+              <div class="col-md-6 col-xs-12"></div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-md-12"><h4 style="text-align:center;width:100%;color:#FFFFFF;">Vendor Detail</h4></div>
+              <%if @booking.imageable_type == "HallManager"%>
+                <%= render 'halls' %>
+              <%elsif @booking.imageable_type == "Photographer"%>
+                <%= render 'photographer' %>
+              <%elsif @booking.imageable_type == "Decorator"%>
+                <%= render 'decorator' %>
+              <%elsif @booking.imageable_type == "Marquee"%>
+                <%= render 'marquee' %>
+              <%end%>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-5 col-xs-12"></div>
+          <div class="col-md-2 col-xs-12">
+            <center>
+              <%= link_to "Back", bookings_path, class:"btn btn-info", style:"color:#FFFFFF;font-weight:bold;font-family: 'Merriweather', serif;"%>
+            </center>
+          </div>
+          <div class="col-md-5 col-xs-12"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

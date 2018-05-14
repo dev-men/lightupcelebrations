@@ -1,0 +1,64 @@
+<% h = Photographer.find(@booking.imageable_id)%>
+  <div class="row login_signup_panel" style="padding-top:2em;padding-left:1em;padding-right:1em;">
+    <div class="col-md-12 col-xs-12">
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Name: </label> <label class="value"><%= h.name%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Equipments: </label> <label class="value"><%= h.equipments%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">City: </label> <label class="value"><%= h.city%></label>
+        </div>
+
+
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Budget of Mayo: </label> <label class="value"><%= h.mayo%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Budget of Mehndi: </label> <label class="value"><%= h.mehndi%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Budget of Barat: </label> <label class="value"><%= h.barat%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Budget of Walima: </label> <label class="value"><%= h.walima%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Budget of Birthday Party: </label> <label class="value"><%= h.party%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Budget of Other: </label> <label class="value"><%= h.other%></label>
+        </div>
+
+        <div class="col-md-12 col-xs-12">
+          <label class="key">Description: </label> <label class="value"><%= h.description%></label>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image1? %>
+        <%= image_tag(h.image1, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image2? %>
+        <%= image_tag(h.image2, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image3? %>
+        <%= image_tag(h.image3, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+  </div>
+
+<%end%>

@@ -1,0 +1,52 @@
+<% h = HallManager.find(@booking.imageable_id)%>
+  <div class="row login_signup_panel" style="padding-top:2em;padding-left:1em;padding-right:1em;margin-top:5px;">
+    <div class="col-md-12 col-xs-12">
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Hall Name: </label> <label class="value"><%= h.hall_name%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Number of Halls: </label> <label class="value"><%= h.number_of_halls%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Guest Capacity: </label> <label class="value"><%= h.guest_capacity%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">Budget Per Head: </label> <label class="value"><%= h.budget_per_head%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+          <label class="key">City: </label> <label class="value"><%= h.city%></label>
+        </div>
+        <div class="col-md-4 col-xs-12">
+        </div>
+        <div class="col-md-12 col-xs-12">
+          <label class="key">Address Line 1: </label> <label class="value"><%= h.address_line_1%></label>
+        </div>
+        <div class="col-md-12 col-xs-12">
+          <label class="key">Address Line 2: </label> <label class="value"><%= h.address_line_2%></label>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image1? %>
+        <%= image_tag(h.image1, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image2? %>
+        <%= image_tag(h.image2, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <% if h.image3? %>
+        <%= image_tag(h.image3, class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%else%>
+        <%= image_tag('hall.png', class:"img-responsive img-thumbnail", style:"width:100%;height:220px;")%>
+      <%end%>
+    </div>
+  </div>

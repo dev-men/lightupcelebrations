@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502014137) do
+ActiveRecord::Schema.define(version: 20180513203311) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,8 +30,9 @@ ActiveRecord::Schema.define(version: 20180502014137) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start"
-    t.datetime "end"
+    t.date "day"
+    t.time "start"
+    t.time "end"
     t.string "location"
     t.integer "user_id"
     t.string "imageable_type"
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20180502014137) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["imageable_type", "imageable_id"], name: "index_bookings_on_imageable_type_and_imageable_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "decorators", force: :cascade do |t|
