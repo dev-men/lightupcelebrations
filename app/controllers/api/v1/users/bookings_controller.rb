@@ -5,8 +5,11 @@ class Api::V1::Users::BookingsController < ApplicationController
       @user = User.find_by_email(params[:user_email])
       if @user
         if @user.role == 1
-          @bookings = @user.bookings
-          render json: @bookings.as_json(:except =>[:id, :created_at, :updated_at, :user_id], :include =>[:imageable]), status: 200
+          @bookings = @user.bookings.order('created_at DESC')
+          render :json => {:bookings => @bookings.as_json(
+                            except: [:created_at, :updated_at, :user_id],
+                            include: { imageable: { except: [:created_at, :updated_at, :approve, :user_id, :image2, :image3] } }
+                          )}, status: 200
         else
           @bookings = []
           @vendor = nil
